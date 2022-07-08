@@ -18,7 +18,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.15.0
-      - run: |
+      - name: build and test
+        run: |
           cd server
           npm ci
           npm run build
