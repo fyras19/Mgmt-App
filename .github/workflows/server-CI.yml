@@ -1,6 +1,6 @@
 # The name of the workflow.
 #
-name: Server CI/CD
+name: Server CI
 
 on:
   pull_request:

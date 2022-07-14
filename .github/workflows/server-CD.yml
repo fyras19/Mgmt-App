@@ -1,6 +1,6 @@
 # The name of the workflow.
 #
-name: Server CI/CD
+name: Server CD
 
 on:
   push:
@@ -36,13 +36,13 @@ jobs:
         run: |
           cd server
           touch .env
-          echo NODE_ENV = 'production' >> .env
+          echo NODE_ENV = 'development' >> .env
           echo MONGO_URI = ${{secrets.MONGO_URI}} >> .env
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "mgmt-app-new-firas" #Must be unique in Heroku
+          heroku_app_name: "mgmt-app-new" #Must be unique in Heroku
           heroku_email: "fyrasdjabou.el19@gmail.com"
           appdir: "server" # <- This will point to the api folder in your project
           env_file: "/.env" # <- This will point to the .env file in your project
