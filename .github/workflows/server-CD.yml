@@ -1,0 +1,49 @@
+# The name of the workflow.
+#
+name: Server CI/CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.0
+      - name: create env file
+        run: |
+          cd server
+          touch .env
+          echo NODE_ENV = 'development' >> .env
+          echo PORT = 5000 >> .env
+          echo MONGO_URI = ${{secrets.MONGO_URI}} >> .env
+      - name: build and test
+        run: |
+          cd server
+          npm ci
+          npm run build
+          npm run test
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: create env file
+        run: |
+          cd server
+          touch .env
+          echo NODE_ENV = 'development' >> .env
+          echo PORT = 5000 >> .env
+          echo MONGO_URI = ${{secrets.MONGO_URI}} >> .env
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "project-mgmt-firas" #Must be unique in Heroku
+          heroku_email: "fyrasdjabou.el19@gmail.com"
+          appdir: "server" # <- This will point to the api folder in your project
+          usedocker: true
