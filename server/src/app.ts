@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
+app.get("/", function(req, res) {
   res.send("Hello world!");
 });
 
