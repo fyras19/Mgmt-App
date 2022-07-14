@@ -36,7 +36,6 @@ jobs:
         run: |
           cd server
           touch .env
-          echo NODE_ENV = 'development' >> .env
           echo MONGO_URI = ${{secrets.MONGO_URI}} >> .env
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12 # This is the action
