@@ -5,10 +5,9 @@ import app from "../src/app";
 const request = supertest(app);
 
 describe("Connect to server", () => {
-
-    beforeAll(async () => {
-        await connectDB();
-    });
+  beforeAll(async () => {
+    await connectDB();
+  });
 
   it("should connect to server", async () => {
     const res = await request
@@ -23,7 +22,7 @@ describe("Connect to server", () => {
                 status
             }
           }
-        `
+        `,
       })
       .set("Content-Type", "application/json")
       .expect(200);

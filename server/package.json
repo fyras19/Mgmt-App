@@ -8,7 +8,7 @@
     "start": "tsc & node .",
     "dev": "tsc -w & nodemon .",
     "test": "jest --coverage --forceExit --detectOpenHandles --maxWorkers=1",
-    "test:watch": "jest --coverage --forceExit --detectOpenHandles  --watchAll --maxWorkers=1"
+    "test:watch": "jest --coverage --watchAll --maxWorkers=1"
   },
   "keywords": [],
   "author": "",
