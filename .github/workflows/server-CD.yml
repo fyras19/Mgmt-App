@@ -42,11 +42,11 @@ jobs:
         uses: AkhileshNS/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "project-mgmt-firas" #Must be unique in Heroku
+          heroku_app_name: "mgmt-app-new-firas" #Must be unique in Heroku
           heroku_email: "fyrasdjabou.el19@gmail.com"
           appdir: "server" # <- This will point to the api folder in your project
-          stack: "heroku-20"
+          # stack: "heroku-20"
           # branch: "master" # <- This will point to the branch you want to deploy
-          # usedocker: false
+          usedocker: false
           env_file: "/.env" # <- This will point to the .env file in your project
-          # procfile: "web: npm start"
+          procfile: "web: npm start"
