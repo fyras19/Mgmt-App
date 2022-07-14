@@ -45,6 +45,7 @@ jobs:
           heroku_app_name: "project-mgmt-firas" #Must be unique in Heroku
           heroku_email: "fyrasdjabou.el19@gmail.com"
           appdir: "server" # <- This will point to the api folder in your project
+          stack: "heroku-20"
           # branch: "master" # <- This will point to the branch you want to deploy
           # usedocker: false
           env_file: "/.env" # <- This will point to the .env file in your project
